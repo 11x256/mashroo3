@@ -27,11 +27,11 @@ using namespace std;
 				m = i;
 			}
 		}
-
+ 
 		if (j == -1)
 			return m + 1;
 		return NOT_FOUND;
-
+ 
 	}
 
 
