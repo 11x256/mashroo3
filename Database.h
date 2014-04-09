@@ -18,7 +18,7 @@ public :
 	string getLastModifiedDate(string pathToXml);
 	int addPreprocessResult(vector<int> delta, int indexOfSignature);
 	vector<int> getPreprocessResult(int index);
-
+	bool compareDate(string signatureXmlPath ,string patternXmlPath );
 
 };
 
