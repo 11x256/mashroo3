@@ -13,7 +13,6 @@ int Quarantine::add(string path) {
 	cout << name;
 	outFile.open(("Quarantine/" + name).c_str());
 	memblock = openFile(path, &size);
-	cout << size;
 
 	for(int i = 0 ; i < size ; i++)
 	{
