@@ -1,20 +1,20 @@
 #include "Horspool.h"
 using namespace std;
+
 char* memblock;
 string File;
 streampos size;
 char *c;
+vector<string> filesToBeScanned;
 
-void t() {
-	ifstream file("hex view.exe", ios::in | ios::binary | ios::ate);
-	string z;
+void openFile(string path) {
+	ifstream file(path.c_str(), ios::in | ios::binary | ios::ate);
 	if (file.is_open()) {
 		size = file.tellg();
 		memblock = new char[size];
 		file.seekg(0, ios::beg);
 		file.read(memblock, size);
 		file.close();
-		stringstream ss;
 		int b;
 		c = new char[size * 2];
 		for (int i = 0; i < size; i++) {
@@ -28,19 +28,21 @@ void t() {
 		cout << "Unable to open file";
 }
 
-
-
 int main() {
-	t();
-	string b = "645F63617374005F5F5A54535374";
-
-	for(int i = 0 ;i < b.length() ; i++)
-		b[i]=toupper(b[i]);
-//	cout<<b;
 	Horspool x;
+	string b = "5";
+	filesToBeScanned.resize(100);
+	filesToBeScanned[0] = "c://a.exe";
+	for (unsigned int i = 0; i < filesToBeScanned.size(); i++) {
+		openFile(filesToBeScanned[i]);
+		//for each signature in database scan (mesh mawgoda )
 
-	cout << x.search(c , size *2, &b);
-	cin.ignore();
-	delete (c);
+		for (unsigned int i = 0; i < b.length(); i++)
+			b[i] = toupper(b[i]);
+
+		cout << x.search(c, size * 2, &b);
+		//	cin.ignore();
+		delete (c);
+	}
 	return 0;
 }
